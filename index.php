@@ -12,6 +12,7 @@ $weapon_mod = !empty($_POST["weapon_mod"]) ? $_POST["weapon_mod"] : 0;
 
 $mod = !empty($_POST["mod"]) ? $_POST["mod"] : 0;
 
+
 // switch ($char) {
 //     case "0":
 //         $mod = 0;
@@ -28,7 +29,7 @@ $mod = !empty($_POST["mod"]) ? $_POST["mod"] : 0;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
+    <script src="https://kit.fontawesome.com/e7d95647e4.js" crossorigin="anonymous"></script>
     <style>
         body {
             background-color: antiquewhite;
@@ -88,18 +89,22 @@ $mod = !empty($_POST["mod"]) ? $_POST["mod"] : 0;
 
     <main class="m-5 d-flex flex-column text-center gap-5 align-items-center">
         <form class="d-flex flex-column gap-3 align-items-center" action="index.php" method="post">
-            <div>
-                <label for="">Seleziona il dado</label>
-                <select name="dice" id="">
-                    <option value="0"></option>
-                    <option value="2">Coin</option>
-                    <option value="4">d4</option>
-                    <option value="6">d6</option>
-                    <option value="8">d8</option>
-                    <option value="10">d10</option>
-                    <option value="20">d20</option>
-                    <option value="100">d100</option>
-                </select> <br>
+            <label>Seleziona il dado</label>
+            <div class="d-flex gap-1">
+                <input type="radio" name="dice" id="dice_2" value="2">
+                <label for="dice_2">Coin</label><br>
+                <input type="radio" name="dice" id="dice_4" value="4">
+                <label for="dice_4">d4</label><br>
+                <input type="radio" name="dice" id="dice_6" value="6">
+                <label for="dice_6">d6</label><br>
+                <input type="radio" name="dice" id="dice_8" value="8">
+                <label for="dice_8">d8</label><br>
+                <input type="radio" name="dice" id="dice_10" value="10">
+                <label for="dice_10">d10</label><br>
+                <input type="radio" name="dice" id="dice_20" value="20">
+                <label for="dice_20">d20</label><br>
+                <input type="radio" name="dice" id="dice_100" value="100">
+                <label for="dice_100">d100</label><br>
             </div>
 
             <div>
@@ -151,6 +156,10 @@ $mod = !empty($_POST["mod"]) ? $_POST["mod"] : 0;
                 <input type="radio" value="6" name="proficency" />+6
             </div>
             <input type="submit" value="Result">
+            <button type="submit" name="reload" class="btn btn-primary">
+                Riprova
+            </button>
+
         </form>
 
         <div class="container ">
@@ -166,7 +175,7 @@ $mod = !empty($_POST["mod"]) ? $_POST["mod"] : 0;
                                 <div class="card-body">
                                     <h5 class="card-title">Dice rolled: d<?= $dice ?></h5>
                                     <?php if ($dice_roll === 20) : ?>
-                                        <p class="card-text">Result: <span class="green"><?= $dice_roll ?></span></p>
+                                        <p class="card-text">Result: <span class="green"><?= $dice_roll ?></i></span></p>
                                     <?php elseif ($dice_roll === 1) : ?>
                                         <p class="card-text">Result: <span class="red"><?= $dice_roll ?></span></p>
                                     <?php else : ?>
@@ -176,9 +185,9 @@ $mod = !empty($_POST["mod"]) ? $_POST["mod"] : 0;
                                     <p class="card-text">Weapon Mod: +<?= $weapon_mod ?></p>
                                     <p class="card-text">Proficency: +<?= $proficency ?></p>
                                     <?php if ($dice_roll === 20) : ?>
-                                        <p class="card-text total ">Total: <span class="green"><?= $result ?></span></p>
+                                        <p class="card-text total ">Total: <span class="green"><?= $result ?> <i class="fa-solid fa-trophy"></i></span></p>
                                     <?php elseif ($dice_roll === 1) : ?>
-                                        <p class="card-text total ">Total: <span class="red"><?= $result ?></span></p>
+                                        <p class="card-text total ">Total: <span class="red"><?= $result ?> <i class="fa-solid fa-skull"></i></span></p>
                                     <?php else : ?>
                                         <p class="card-text total">Total: <span><?= $result ?></span></p>
                                     <?php endif; ?>
