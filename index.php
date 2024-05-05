@@ -156,9 +156,9 @@ $mod = !empty($_POST["mod"]) ? $_POST["mod"] : 0;
                 <input type="radio" value="6" name="proficency" />+6
             </div>
             <input type="submit" value="Result">
-            <button type="submit" name="reload" class="btn btn-primary">
+            <!-- <button type="submit" name="reload" class="btn btn-primary">
                 Riprova
-            </button>
+            </button> -->
 
         </form>
 
@@ -181,9 +181,12 @@ $mod = !empty($_POST["mod"]) ? $_POST["mod"] : 0;
                                     <?php else : ?>
                                         <p class="card-text">Result: <span><?= $dice_roll ?></span></p>
                                     <?php endif; ?>
+                                    <!-- questo ci permette di dare un colore diverso al n. dei dadi in base al se siano o meno fallimenti o successi critici -->
+
                                     <p class="card-text">Mod: +<?= $mod ?></p>
                                     <p class="card-text">Weapon Mod: +<?= $weapon_mod ?></p>
                                     <p class="card-text">Proficency: +<?= $proficency ?></p>
+
                                     <?php if ($dice_roll === 20) : ?>
                                         <p class="card-text total ">Total: <span class="green"><?= $result ?> <i class="fa-solid fa-trophy"></i></span></p>
                                     <?php elseif ($dice_roll === 1) : ?>
@@ -191,6 +194,7 @@ $mod = !empty($_POST["mod"]) ? $_POST["mod"] : 0;
                                     <?php else : ?>
                                         <p class="card-text total">Total: <span><?= $result ?></span></p>
                                     <?php endif; ?>
+                                    <!-- questo ci permette di dare un colore diverso al n. dei dadi in base al se siano o meno fallimenti o successi critici -->
                                 </div>
                             </div>
                         </div>
