@@ -44,7 +44,7 @@ $mod = !empty($_POST["mod"]) ? $_POST["mod"] : 0;
 
             & td {
                 border: 1px solid;
-                width: 150px;
+                width: 120px;
             }
 
         }
@@ -67,6 +67,14 @@ $mod = !empty($_POST["mod"]) ? $_POST["mod"] : 0;
         .total {
             font-size: 2rem;
             border-top: 1px solid;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .green {
+            color: green;
         }
     </style>
 </head>
@@ -145,7 +153,7 @@ $mod = !empty($_POST["mod"]) ? $_POST["mod"] : 0;
             <input type="submit" value="Result">
         </form>
 
-        <div class="container">
+        <div class="container ">
             <div class="row justify-content-center">
                 <?php
                 for ($i = 0; $i < $dices; $i++) {
@@ -157,11 +165,23 @@ $mod = !empty($_POST["mod"]) ? $_POST["mod"] : 0;
                             <div class="card h-100">
                                 <div class="card-body">
                                     <h5 class="card-title">Dice rolled: d<?= $dice ?></h5>
-                                    <p class="card-text">Result: <?= $dice_roll ?></p>
+                                    <?php if ($dice_roll === 20) : ?>
+                                        <p class="card-text">Result: <span class="green"><?= $dice_roll ?></span></p>
+                                    <?php elseif ($dice_roll === 1) : ?>
+                                        <p class="card-text">Result: <span class="red"><?= $dice_roll ?></span></p>
+                                    <?php else : ?>
+                                        <p class="card-text">Result: <span><?= $dice_roll ?></span></p>
+                                    <?php endif; ?>
                                     <p class="card-text">Mod: +<?= $mod ?></p>
                                     <p class="card-text">Weapon Mod: +<?= $weapon_mod ?></p>
                                     <p class="card-text">Proficency: +<?= $proficency ?></p>
-                                    <p class="card-text total">Total: <?= $result ?></p>
+                                    <?php if ($dice_roll === 20) : ?>
+                                        <p class="card-text total ">Total: <span class="green"><?= $result ?></span></p>
+                                    <?php elseif ($dice_roll === 1) : ?>
+                                        <p class="card-text total ">Total: <span class="red"><?= $result ?></span></p>
+                                    <?php else : ?>
+                                        <p class="card-text total">Total: <span><?= $result ?></span></p>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
