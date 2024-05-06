@@ -12,6 +12,8 @@ $weapon_mod = !empty($_POST["weapon_mod"]) ? $_POST["weapon_mod"] : 0;
 
 $mod = !empty($_POST["mod"]) ? $_POST["mod"] : 0;
 
+if (isset($_POST["result"])) {
+}
 
 // switch ($char) {
 //     case "0":
@@ -155,7 +157,7 @@ $mod = !empty($_POST["mod"]) ? $_POST["mod"] : 0;
                 <input type="radio" value="5" name="proficency" />+5
                 <input type="radio" value="6" name="proficency" />+6
             </div>
-            <input type="submit" value="Result">
+            <input type="submit" name="result" value="Result">
             <!-- <button type="submit" name="reload" class="btn btn-primary">
                 Riprova
             </button> -->
