@@ -13,6 +13,9 @@ $weapon_mod = !empty($_POST["weapon_mod"]) ? $_POST["weapon_mod"] : 0;
 $mod = !empty($_POST["mod"]) ? $_POST["mod"] : 0;
 
 if (isset($_POST["result"])) {
+    $char = filter_input(INPUT_POST, "char", FILTER_SANITIZE_SPECIAL_CHARS); // UTILIZZARE QUESTO FILTRO per sanificare ed evitare sql injection e virsu malevoli, qui inutile
+    $char = filter_input(INPUT_POST, "char", FILTER_SANITIZE_NUMBER_INT); // 
+    $char = filter_input(INPUT_POST, "char", FILTER_SANITIZE_EMAIL); //
 }
 
 // switch ($char) {
